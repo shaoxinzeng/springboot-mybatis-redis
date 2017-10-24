@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkd.mapper.AssetBorrowOrderMapper" >
+    <resultMap id="BaseResultMap" type="com.hkd.entity.AssetBorrowOrder" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="user_id" property="userId" jdbcType="INTEGER" />
+        <result column="out_trade_no" property="outTradeNo" jdbcType="VARCHAR" />
+        <result column="order_type" property="orderType" jdbcType="INTEGER" />
+        <result column="money_amount" property="moneyAmount" jdbcType="INTEGER" />
+        <result column="money_amount_show" property="moneyAmountShow" jdbcType="INTEGER" />
+        <result column="apr" property="apr" jdbcType="INTEGER" />
+        <result column="loan_interests" property="loanInterests" jdbcType="INTEGER" />
+        <result column="into_money" property="intoMoney" jdbcType="INTEGER" />
+        <result column="loan_method" property="loanMethod" jdbcType="INTEGER" />
+        <result column="loan_term" property="loanTerm" jdbcType="INTEGER" />
+        <result column="operator_name" property="operatorName" jdbcType="VARCHAR" />
+        <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+        <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+        <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+        <result column="loan_time" property="loanTime" jdbcType="VARCHAR" />
+        <result column="loan_end_time" property="loanEndTime" jdbcType="VARCHAR" />
+        <result column="late_fee_apr" property="lateFeeApr" jdbcType="INTEGER" />
+        <result column="receive_card_id" property="receiveCardId" jdbcType="INTEGER" />
+        <result column="debit_card_id" property="debitCardId" jdbcType="INTEGER" />
+        <result column="verify_trial_time" property="verifyTrialTime" jdbcType="TIMESTAMP" />
+        <result column="verify_trial_remark" property="verifyTrialRemark" jdbcType="VARCHAR" />
+        <result column="verify_trial_user" property="verifyTrialUser" jdbcType="VARCHAR" />
+        <result column="verify_review_time" property="verifyReviewTime" jdbcType="VARCHAR" />
+        <result column="verify_review_remark" property="verifyReviewRemark" jdbcType="VARCHAR" />
+        <result column="verify_review_user" property="verifyReviewUser" jdbcType="VARCHAR" />
+        <result column="verify_loan_time" property="verifyLoanTime" jdbcType="TIMESTAMP" />
+        <result column="verify_loan_remark" property="verifyLoanRemark" jdbcType="VARCHAR" />
+        <result column="verify_loan_user" property="verifyLoanUser" jdbcType="VARCHAR" />
+        <result column="capital_type" property="capitalType" jdbcType="INTEGER" />
+        <result column="reason_remark" property="reasonRemark" jdbcType="VARCHAR" />
+        <result column="credit_lv" property="creditLv" jdbcType="INTEGER" />
+        <result column="is_hit_risk_rule" property="isHitRiskRule" jdbcType="TINYINT" />
+        <result column="auto_risk_check_status" property="autoRiskCheckStatus" jdbcType="TINYINT" />
+        <result column="customer_type" property="customerType" jdbcType="INTEGER" />
+        <result column="yurref" property="yurref" jdbcType="VARCHAR" />
+        <result column="serial_no" property="serialNo" jdbcType="VARCHAR" />
+        <result column="id_number" property="idNumber" jdbcType="VARCHAR" />
+        <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+        <result column="realname" property="realname" jdbcType="VARCHAR" />
+        <result column="card_no" property="cardNo" jdbcType="VARCHAR" />
+        <result column="bank_number" property="bankNumber" jdbcType="VARCHAR" />
+        <result column="bank_iscmb" property="bankIscmb" jdbcType="INTEGER" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="pay_remark" property="payRemark" jdbcType="VARCHAR" />
+        <result column="pay_status" property="payStatus" jdbcType="VARCHAR" />
+    </resultMap>
+
+
+
+    <sql id="Base_Column_List" >
+        abo.id, abo.user_id, abo.out_trade_no, abo.order_type, abo.money_amount,abo.money_amount_show, apr, loan_interests, into_money,
+        loan_method, loan_term, operator_name, created_at, updated_at, order_time, loan_time,
+        loan_end_time, late_fee_apr, receive_card_id, debit_card_id, verify_trial_time, verify_trial_remark,
+        verify_trial_user, verify_review_time, verify_review_remark, verify_review_user,
+        verify_loan_time, verify_loan_remark, verify_loan_user, capital_type, reason_remark,
+        credit_lv, is_hit_risk_rule, auto_risk_check_status, customer_type, yurref, serial_no,
+        id_number, user_phone, realname, card_no, bank_number, bank_iscmb, status, pay_remark,
+        pay_status
+    </sql>
+
+    <sql id="Blob_Column_List" >
+        abo.remark
+    </sql>
+
+    <select id="selectUserLoanRecord"  resultMap="BaseResultMap" resultType="com.hkd.entity.AssetBorrowOrder">
+        SELECT
+        <include refid="Base_Column_List" />
+        ,
+        <include refid="Blob_Column_List" />
+          FROM asset_borrow_order abo,asset_order_connect aoc
+        WHERE
+          aoc.id = #{poolId} AND aoc.asset_order_id = abo.id
+          ORDER BY aoc.sort ASC
+    </select>
+
+</mapper>

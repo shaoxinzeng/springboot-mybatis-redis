@@ -1,0 +1,122 @@
+2017-09-27 14:20:34,070 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 10960 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 14:20:34,076 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 14:20:34,076 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 14:20:42,194 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 8.735 seconds (JVM running for 10.5)
+2017-09-27 14:29:08,251 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 15752 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 14:29:08,251 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 14:29:08,251 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 14:29:15,075 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 7.422 seconds (JVM running for 8.633)
+2017-09-27 14:32:00,501 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 10168 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 14:32:00,502 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 14:32:00,502 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 14:32:06,836 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 6.706 seconds (JVM running for 8.055)
+2017-09-27 14:33:28,572 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 16356 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 14:33:28,573 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 14:33:28,573 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 14:33:34,986 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 6.916 seconds (JVM running for 8.057)
+2017-09-27 14:34:07,914 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 16084 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 14:34:07,915 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 14:34:07,915 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 14:34:14,551 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 7.239 seconds (JVM running for 8.284)
+2017-09-27 14:34:58,346 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 15576 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 14:34:58,347 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 14:34:58,347 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 14:35:05,041 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 7.085 seconds (JVM running for 8.288)
+2017-09-27 14:37:31,076 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 14428 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 14:37:31,077 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 14:37:31,077 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 14:37:37,701 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 7.052 seconds (JVM running for 8.226)
+2017-09-27 14:38:05,571 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 11376 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 14:38:05,571 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 14:38:05,571 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 14:38:12,075 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 7.129 seconds (JVM running for 7.983)
+2017-09-27 14:40:49,637 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 15640 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 14:40:49,638 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 14:40:49,638 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 14:40:57,485 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 8.268 seconds (JVM running for 10.081)
+2017-09-27 14:42:22,188 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 3052 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 14:42:22,188 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 14:42:22,188 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 14:42:28,950 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 7.383 seconds (JVM running for 8.609)
+2017-09-27 14:53:08,385 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 15736 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 14:53:08,385 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 14:53:08,386 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 14:53:15,322 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 7.585 seconds (JVM running for 8.558)
+2017-09-27 14:55:46,900 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 13424 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 14:55:46,901 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 14:55:46,901 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 14:55:53,606 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 7.451 seconds (JVM running for 8.473)
+2017-09-27 14:56:24,495 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 15772 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 14:56:24,496 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 14:56:24,496 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 14:57:12,082 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 48.117 seconds (JVM running for 48.961)
+2017-09-27 14:57:55,711 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 14548 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 14:57:55,711 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 14:57:55,712 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 14:58:14,426 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 19.106 seconds (JVM running for 20.286)
+2017-09-27 14:58:26,098 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 12680 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 14:58:26,099 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 14:58:26,099 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 14:58:31,899 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 6.424 seconds (JVM running for 7.23)
+2017-09-27 14:59:49,764 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 14844 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 14:59:49,764 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 14:59:49,765 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 15:00:00,405 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 11.231 seconds (JVM running for 12.236)
+2017-09-27 15:00:16,933 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 8352 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 15:00:16,933 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 15:00:16,933 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 15:00:23,209 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 6.728 seconds (JVM running for 7.651)
+2017-09-27 15:02:13,886 INFO (StartupInfoLogger.java:48)- Starting QiYueSuoUtil on 1-PC with PID 14848 (E:\a_inke\inke\git\hkd\target\classes started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 15:02:13,889 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 15:02:13,889 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 15:03:30,949 INFO (StartupInfoLogger.java:48)- Starting QiYueSuoUtil on 1-PC with PID 14176 (E:\a_inke\inke\git\hkd\target\classes started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 15:03:30,951 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 15:03:30,951 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 15:05:46,570 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 15520 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 15:05:46,571 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 15:05:46,571 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 15:05:57,735 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 11.751 seconds (JVM running for 12.715)
+2017-09-27 15:07:37,961 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 15376 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 15:07:37,962 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 15:07:37,962 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 15:07:44,801 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 7.421 seconds (JVM running for 8.446)
+2017-09-27 15:14:06,716 INFO (StartupInfoLogger.java:48)- Starting QiYueSuoUtil on 1-PC with PID 9676 (E:\a_inke\inke\git\hkd\target\classes started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 15:14:06,723 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 15:14:06,723 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 15:14:29,016 INFO (StartupInfoLogger.java:48)- Starting QiYueSuoUtil on 1-PC with PID 16304 (E:\a_inke\inke\git\hkd\target\classes started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 15:14:29,018 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 15:14:29,018 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 15:40:30,932 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 12608 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 15:40:30,933 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 15:40:30,933 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 15:40:37,816 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 7.525 seconds (JVM running for 8.33)
+2017-09-27 15:40:59,843 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 10392 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 15:40:59,843 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 15:40:59,844 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 15:41:10,193 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 7356 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 15:41:10,193 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 15:41:10,193 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 15:41:33,556 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 12788 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 15:41:33,556 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 15:41:33,556 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 15:41:39,810 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 6.833 seconds (JVM running for 7.744)
+2017-09-27 15:42:12,765 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 3432 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 15:42:12,765 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 15:42:12,765 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 15:42:49,667 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 10712 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 15:42:49,668 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 15:42:49,668 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 15:42:57,050 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 15832 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 15:42:57,051 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 15:42:57,051 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 15:43:00,714 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 11.419 seconds (JVM running for 12.53)
+2017-09-27 15:43:01,317 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 49.113 seconds (JVM running for 50.028)
+2017-09-27 15:43:07,868 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 13.156 seconds (JVM running for 14.824)
+2017-09-27 15:58:28,105 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 12740 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 15:58:28,106 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 15:58:28,106 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 15:58:35,244 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 7.758 seconds (JVM running for 8.799)
+2017-09-27 16:00:47,275 INFO (StartupInfoLogger.java:48)- Starting HkdApplicationTests on 1-PC with PID 16172 (started by 1 in E:\a_inke\inke\git\hkd)
+2017-09-27 16:00:47,275 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.6.RELEASE, Spring v4.3.10.RELEASE
+2017-09-27 16:00:47,275 INFO (SpringApplication.java:597)- The following profiles are active: dev
+2017-09-27 16:00:53,220 INFO (StartupInfoLogger.java:57)- Started HkdApplicationTests in 6.663 seconds (JVM running for 7.525)

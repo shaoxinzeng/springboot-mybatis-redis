@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>帮助中心</title>
+<meta http-equiv="Expires" content="-1" />               
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" /> 
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<link rel="stylesheet" type="text/css" th:href="@{/zmxy/css/jquery.mobile-1.4.2.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/zmxy/css/basic.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/zmxy/css/common.css}" />
+ 
+<script type="text/javascript" th:src="@{/zmxy/js/jquery-1.8.3.min.js}"></script>
+<script type="text/javascript" th:src="@{/zmxy/js/jquery.mobile-1.4.2.min.js}"></script>
+<script type="text/javascript" th:src="@{/zmxy/js/base.js}"></script>
+<script type="text/javascript" th:src="@{/zmxy/js/global-1.1.0.min.js}"></script>
+</head>
+<body>
+	<div class="ui-page ui-page-theme-a ui-page-active" data-role="page" >
+    	<div class="wrapper" id="thetimebeing" style="display: none">
+          <div class="no-news">
+              <img th:src="@{/zmxy/images/b_08.png}" alt="" ></img>
+              <p>暂无帮助信息哦~</p>
+          </div>
+        </div>
+        
+        <!-- main start -->
+        <div class="wrapper pd40">
+	   		<!-- <ul class="top22 clearfix">
+		   		 <li id="dhjing"><img th:src="@{/zmxy/images/dh1.png}" />
+		   		 	<a href="javascript:sobotService();">
+		   		 		<span>智能客服</span>
+		   		 	</a>
+		   		 </li>
+		     	 <li id="dh2" style="border-right:none;"><img style="width:2rem; height:1.6rem;" th:src="@{/zmxy/images/dh2.png}" />
+		     	 	<a href="javascript:iosPhoneService();">
+		     	 		<span>电话客服</span>
+		     	 		<input type="hidden" th:value="${tel}" data-role="none" disabled="disabled" id="tel"></input>
+		     	 	</a>
+		     	 </li>
+	      	</ul> -->
+	         <ul class="help-list" id="Investors">
+	         
+	         </ul>
+       </div> 
+       <!-- main end -->
+       
+       <div id="ttc" style="display:none;">
+       
+       </div>
+       
+	   <div class="wind" style="display:none;">
+		 <h2>电话客服</h2>
+		 <p>400-208-393</p>
+		 <ul>
+			 <li><a rel="external" href="javascript:();" id="close">取消</a></li>
+			 <li><a rel="external" href="javascript:androidPhoneService();">呼叫</a></li>
+		</ul>
+	   </div>
+	   
+    </div>
+    <form action="" id="tempForm" method="get" data-ajax="false">
+    
+    </form>
+<script type="text/javascript">
+//<![CDATA[ 
+	$(function(){
+	 var u = navigator.userAgent, app = navigator.appVersion;
+	 var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+	 var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+	 if(isAndroid){
+		$('#dh2').click(function(e) {
+			$('.wind').show();
+			$('#ttc').show();
+		});		
+	 } 
+	 if(isIOS){
+		 $('#dh2').click(function(e) {
+			 iosPhoneService();
+			});		
+	}
+	
+	 $('#dhjing').click(function(e) {
+		 sobotService();
+		});		
+	$('#close').click(function(e) {
+	    $('.wind').hide();
+		$('#ttc').hide();
+	});	
+
+	
+	$(window).scroll(function () {
+	  	//已经滚动到上面的页面高度
+	 	var scrollTop = $(this).scrollTop();
+	 	//页面高度
+	 	var scrollHeight = $(document).height();
+	 	//浏览器窗口高度
+		var windowHeight = $(this).height();
+		//此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+		if (scrollTop + windowHeight == scrollHeight) {
+			theHotIssue.pageNum++;
+			if(theHotIssue.pageNum<=theHotIssue.totalPage){
+				theHotIssue.theHotIssueInfo();
+			}
+		 }
+	 });
+	theHotIssue.init();
+})
+
+ var theHotIssue={
+	pageNum:1,
+	totalPage:1,
+	init:function(){
+		theHotIssue.theHotIssueInfo();
+	},
+	theHotIssueInfo:function(){
+		var data = {};
+		data.pageSize=20;
+		data.pageNum=theHotIssue.pageNum;
+		openAjax('/help/findTheHotIssueList', data, theHotIssue.theHotIssueHtml);
+	},
+	theHotIssueHtml:function(data){
+		if(data.code ==$_SUCCESS_CODE){
+			if(theHotIssue.pageNum==1&&data.data.list.length<=0){
+				$(".wind").show();
+			}
+			theHotIssue.totalPage=data.data.pages;
+			var transHtml='';
+			if(data.data.list.length > 0){
+				$.each(data.data.list,function(i, account) {
+					 transHtml+='<li>'+
+		             '     <div class="help-title">'+
+		             '       <img th:src="@{/zmxy/images/jt.png}" alt="" />'+
+		             '       <span>'+account.channelTitle+'</span>'+
+		             '     </div>'+
+		             '     <div class="help-info">'+
+		             '         <p>'+account.contentTxt+'</p>'+
+		             '     </div>'+
+		             ' </li>';
+				});
+				$("#Investors").append(transHtml);
+				$('.help-list .help-title').unbind();
+			 	$('.help-list .help-title').click(function(event) {
+		            $(this).toggleClass('current');
+		            $(this).next().slideToggle();
+        		});
+			}
+			if(theHotIssue.pageNum==1&&data.data.list.length<=0){
+				$("#thetimebeing").show();
+			}
+		}else{
+			$("#thetimebeing").show();
+		}
+	}
+}
+//电话客服
+function androidPhoneService() {
+    var phone = $("#tel").val();
+    var u = navigator.userAgent, app = navigator.appVersion;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    if (isAndroid) {
+        nativeMethod.callPhoneMethod(phone);
+    }
+}
+
+function iosPhoneService(){
+	var phone = $("#tel").val();
+    var u = navigator.userAgent, app = navigator.appVersion;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    if (isIOS) {
+        $("#tempForm").attr("action", "/www.iosPhone.com&" + phone);
+        $("#tempForm").submit();
+    }
+}
+
+//智能客服
+function sobotService(){
+	var u = navigator.userAgent, app = navigator.appVersion;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    if (isAndroid) {
+        nativeMethod.sobot();
+    } else if (isIOS) {
+        $("#tempForm").attr("action", "/www.iosSobot.com&");
+        $("#tempForm").submit();
+    }
+}
+	//]]>
+
+</script> 
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	<title>消息中心</title>
+	<meta http-equiv="Expires" content="-1" />               
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Cache-Control" content="no-cache" /> 
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" type="text/css" th:href="@{/zmxy/css/jquery.mobile-1.4.2.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/zmxy/css/basic.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/zmxy/css/common.css}" />
+	 
+	<script type="text/javascript" th:src="@{/zmxy/js/jquery-1.8.3.min.js}"></script>
+	<script type="text/javascript" th:src="@{/zmxy/js/jquery.mobile-1.4.2.min.js}"></script>
+	<script type="text/javascript" th:src="@{/zmxy/js/base.js}"></script>
+	<script type="text/javascript" th:src="@{/zmxy/js/global-1.1.0.min.js}"></script>
+</head>
+<body style="background:#fff;">
+	<div class="ui-page ui-page-theme-a ui-page-active" data-role="page"  style="background:#fff;">
+        <!-- main start -->
+        <div class="wrapper" id="thetimebeing" style="display: none">
+          <div class="no-news">
+              <img th:src="@{/zmxy/images/b_08.png}" alt="" />
+              <p>暂无消息通知哦~</p>
+          </div>
+        </div>
+        
+        <!-- main end -->
+        <div class="wrapper">
+          <div class="qb">
+		        <ul id="Investors">
+		        </ul>
+      		</div>
+        </div>
+	</div>
+	
+<script type="text/javascript">
+//<![CDATA[
+	$(function(){
+		$(window).scroll(function () {
+		  	//已经滚动到上面的页面高度
+		 	var scrollTop = $(this).scrollTop();
+		 	//页面高度
+		 	var scrollHeight = $(document).height();
+		 	//浏览器窗口高度
+			var windowHeight = $(this).height();
+			//此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+			if (scrollTop + windowHeight == scrollHeight) {
+				theHotIssue.pageNum++;
+				if(theHotIssue.pageNum<=theHotIssue.totalPage){
+					theHotIssue.theHotIssueInfo();
+				}
+			 }
+		 });
+		theHotIssue.init();
+	});
+	
+	var theHotIssue={
+		pageNum:1,
+		totalPage:1,
+		init:function(){
+			theHotIssue.theHotIssueInfo();
+		},theHotIssueInfo:function(){
+			var data = {};
+			data.pageSize=20;
+			data.pageNum=theHotIssue.pageNum;
+			openAjax('/help/findactivity', data, theHotIssue.theHotIssueHtml);
+		},theHotIssueHtml:function(data){
+			if(data.code ==$_SUCCESS_CODE){
+				if(theHotIssue.pageNum==1&&data.data.list.length<=0){
+					$("#thetimebeing").show();
+				}
+				theHotIssue.totalPage=data.data.pages;
+				var transHtml='';
+				if(data.data.list.length > 0){
+					$.each(data.data.list,function(i, account) {
+						 transHtml+='<li><a href="/content/details?id='+account.id+'" rel="external">'+
+			            			'<h3><i class="yd"></i><em>'+account.channelTitle+'</em><span>'+account.createTime+'</span></h3>'+
+			            			'<p>'+account.contentSummary+'</p>'+
+			            			'</a> </li>';
+					});
+					$("#Investors").append(transHtml);
+				}
+				if(theHotIssue.pageNum==1&&data.data.list.length<=0){
+					$("#thetimebeing").show();
+				}
+			}else{
+				if(theHotIssue.pageNum==1){
+					$("#thetimebeing").show();
+				}
+			}
+		}
+	} 
+	//]]>
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+.common-button, .pop-box button {
+  background-color: #eba221;
+}
+
+.more .footer a {
+  border-color: #eba221;
+  background-color: #eba221;
+}
+
+.alipay-certification .code a, .phone-verify ul li a.send, .phone-verify a.button, .repayment-detail.wrap .button a {
+  background-color: #eba221;
+}
+
+.pay-result a.button {
+  border-color: #eba221;
+  color: #eba221;
+}
+
+.forget-password .tab li.action, .forget-password .piece button {
+  background-color: #eba221;
+}
+
+.forget-password .tab li, .forget-password .piece .head i, .forget-password .piece .content a {
+  color: #eba221;
+}
+
+.forget-password .tab li, .forget-password .tab li:last-child {
+  border-color: #eba221;
+}
+
+.wx-login button {
+  background-color: #eba221;
+}
+
+.wx-login input {
+  border-color: #eba221;
+}
+
+.repayment-detail.wrap .content ul>li.do:first-child {
+  background-image: url(../img/icon_01_01.png);
+}
+
+.repayment-detail.wrap .content ul>li.do:first-child:after {
+  background-color: #eba221;
+}
+
+.repayment-description ul li.active, .repayment-description h3 a, .extension p a {
+  color: #eba221;
+}

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkd.mapper.BorrowOrderMapper">
+
+    <resultMap id="BaseResultMap" type="com.hkd.entity.AssetBorrowOrder">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="user_id" property="userId" jdbcType="INTEGER" />
+        <result column="out_trade_no" property="outTradeNo" jdbcType="VARCHAR" />
+        <result column="order_type" property="orderType" jdbcType="INTEGER" />
+        <result column="money_amount" property="moneyAmount" jdbcType="INTEGER" />
+        <result column="apr" property="apr" jdbcType="INTEGER" />
+        <result column="loan_interests" property="loanInterests" jdbcType="INTEGER" />
+        <result column="into_money" property="intoMoney" jdbcType="INTEGER" />
+        <result column="loan_method" property="loanMethod" jdbcType="INTEGER" />
+        <result column="loan_term" property="loanTerm" jdbcType="INTEGER" />
+        <result column="operator_name" property="operatorName" jdbcType="VARCHAR" />
+        <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+        <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+        <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+        <result column="loan_time" property="loanTime" jdbcType="TIMESTAMP" />
+        <result column="loan_end_time" property="loanEndTime" jdbcType="TIMESTAMP" />
+        <result column="late_fee_apr" property="lateFeeApr" jdbcType="INTEGER" />
+        <result column="receive_card_id" property="receiveCardId" jdbcType="INTEGER" />
+        <result column="debit_card_id" property="debitCardId" jdbcType="INTEGER" />
+        <result column="capital_type" property="capitalType" jdbcType="INTEGER" />
+        <result column="reason_remark" property="reasonRemark" jdbcType="VARCHAR" />
+        <result column="credit_lv" property="creditLv" jdbcType="INTEGER" />
+        <result column="is_hit_risk_rule" property="isHitRiskRule" jdbcType="TINYINT" />
+        <result column="auto_risk_check_status" property="autoRiskCheckStatus" jdbcType="TINYINT" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="verify_trial_user" property="verifyTrialUser" jdbcType="VARCHAR" />
+        <result column="verify_trial_time" property="verifyTrialTime" jdbcType="TIMESTAMP" />
+        <result column="verify_trial_remark" property="verifyTrialRemark" jdbcType="VARCHAR" />
+        <result column="verify_review_user" property="verifyReviewUser" jdbcType="VARCHAR" />
+        <result column="verify_review_time" property="verifyReviewTime" jdbcType="TIMESTAMP" />
+        <result column="verify_review_remark" property="verifyReviewRemark" jdbcType="VARCHAR" />
+        <result column="verify_loan_user" property="verifyLoanUser" jdbcType="VARCHAR" />
+        <result column="verify_loan_time" property="verifyLoanTime" jdbcType="TIMESTAMP" />
+        <result column="verify_loan_remark" property="verifyLoanRemark" jdbcType="VARCHAR" />
+        <result column="yurref" property="yurref" jdbcType="VARCHAR" />
+        <result column="customer_type" property="customerType" jdbcType="INTEGER" />
+        <result column="serial_no" property="serialNo" jdbcType="VARCHAR" />
+        <result column="bank_iscmb" property="bankIscmb" jdbcType="INTEGER" />
+        <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+        <result column="realname" property="realname" jdbcType="VARCHAR" />
+        <result column="id_number" property="idNumber" jdbcType="VARCHAR" />
+        <result column="card_no" property="cardNo" jdbcType="VARCHAR" />
+        <result column="bank_number" property="bankNumber" jdbcType="VARCHAR" />
+        <result column="pay_status" property="payStatus" jdbcType="VARCHAR" />
+        <result column="pay_remark" property="payRemark" jdbcType="VARCHAR" />
+        <result column="remark" property="remark" jdbcType="LONGVARCHAR" />
+    </resultMap>
+
+
+    <select id="findAuditFailureOrderByUserId" resultType="com.hkd.entity.AssetBorrowOrder">
+        SELECT verify_trial_time as verifyTrialTime,
+        verify_review_time as verifyReviewTime,
+        verify_loan_time as verifyLoanTime
+        FROM asset_borrow_order WHERE user_id=#{userId}
+        <if test='statusList!=null'>
+            AND status IN
+            <foreach collection="statusList" item="item" open="("
+                     separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        order by id desc
+        limit 1
+    </select>
+
+    <select id="findByUserId" parameterType="Integer" resultMap="BaseResultMap">
+        select * from asset_borrow_order where user_id=#{userId}
+    </select>
+
+    <select id="countAddAmount" resultType="Map" parameterType="int">
+        select sum(add_amount) as add_amount from user_limit_record where user_id=#{userId}
+        and add_reason_type != 0
+    </select>
+    
+    <select id="selectBorrowOrderNowUseId" resultType="com.hkd.entity.BorrowOrder" parameterType="java.lang.Integer">
+		select 
+		bo.out_trade_no outTradeNo,
+		bo.apr apr,
+		bo.loan_interests loanInterests,
+		bo.created_at createdAt,
+		bo.order_time orderTime,
+		bo.loan_time loanTime,
+		bo.loan_time loanTime,
+		bo.loan_end_time loanEndTime,
+		bo.status status
+		from asset_borrow_order bo 
+		where user_id = #{id,jdbcType=INTEGER} order by created_at DESC LIMIT 1
+	</select>
+
+    <update id="updateInfoUserInfoBorrowStatus" parameterType="HashMap">
+        <![CDATA[
+			update info_index_info set borrow_status = #{BORROW_STATUS} where user_id=#{USER_ID}
+		]]>
+    </update>
+
+    <insert id="insertRiskUser" parameterType="HashMap">
+        insert into risk_credit_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="assetId != null">
+                asset_id,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="cardNum != null">
+                card_num,
+            </if>
+            <if test="userPhone != null">
+                user_phone,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="moneyAmount != null">
+                money_amount,
+            </if>
+            <if test="amountAddsum != null">
+                amount_addsum,
+            </if>
+            <if test="education != null">
+                education,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="assetId != null">
+                #{assetId,jdbcType=INTEGER},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="cardNum != null">
+                #{cardNum,jdbcType=VARCHAR},
+            </if>
+            <if test="userPhone != null">
+                #{userPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=INTEGER},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="moneyAmount != null">
+                #{moneyAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="amountAddsum != null">
+                #{amountAddsum,jdbcType=DECIMAL},
+            </if>
+            <if test="education != null">
+                #{education,jdbcType=INTEGER},
+            </if>
+
+        </trim>
+    </insert>
+</mapper>

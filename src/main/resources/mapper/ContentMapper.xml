@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkd.mapper.ContentMapper">
+	<resultMap id="BaseResultMap" type="com.hkd.entity.Content">
+		<id column="id" property="id" />
+		<result column="channel_type" property="channelType" />
+		<result column="content_title" property="contentTitle" />
+		<result column="content_summary" property="contentSummary" />
+		<result column="add_time" property="addTime" />
+		<result column="add_user_id" property="addUserId" />
+		<result column="update_user_id" property="updateUserId" />
+		<result column="add_ip" property="addIp" />
+		<result column="content_txt" property="contentTxt" />
+		<result column="update_time" property="updateTime" />
+		<result column="view_count" property="viewCount" />
+		<result column="is_deleted" property="isDeleted" />
+		<result column="remark" property="remark" />
+		<result column="order_num" property="orderNum" />
+		<result column="from_url" property="fromUrl" />
+		<result column="img_url" property="imgUrl" />
+		<result column="external_url" property="externalUrl" />
+	</resultMap>
+
+	 <select id="findList" resultMap="BaseResultMap" parameterType="HashMap">
+			select a.*
+			from info_content as a 
+			where is_deleted = 1
+			<if test="channelType != null and channelType != ''">
+			  and channel_type=#{channelType}
+			</if>
+			<if test="contentTitle != null and contentTitle != ''">
+			  and content_title like  CONCAT('%', #{contentTitle}, '%')
+			</if>
+			<if test="contentTxt != null and contentTxt != ''">
+			 and content_txt like  CONCAT('%', #{contentTxt}, '%')
+			</if>
+			 order by order_num asc,add_time desc
+	</select>
+	
+	<select id="findById" parameterType="String" resultMap="BaseResultMap">
+		select * from info_content where id=#{id} and  is_deleted = 1
+	</select>
+
+</mapper>

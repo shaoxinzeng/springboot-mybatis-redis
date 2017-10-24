@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hkd.mapper.LoanDetailsMapper">
+
+    <select id="countLateFeeByOrderId"  resultType="java.lang.Integer" >
+        SELECT IFNUll(SUM(plan_late_fee),0.00)  from
+          asset_repayment ar,asset_borrow_order abo WHERE
+          ar.asset_order_id = abo.id  AND
+          ar.asset_order_id IN
+        <foreach collection="array" index="index" item="ids" open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+    </select>
+
+    <select id="findExpectedRepayment" resultType="com.hkd.entity.LoanDetails">
+      <![CDATA[
+        SELECT abo.money_amount AS moneyAmount,abo.loan_end_time AS loanEndTime FROM
+        asset_borrow_order abo,asset_order_connect aoc
+        WHERE NOW() >= abo.loan_time AND NOW() <= abo.loan_end_time AND aoc.id = #{poolId}
+        AND aoc.asset_order_id = abo.id AND `status` IN (21,30,-11,-20)
+      ]]>
+    </select>
+
+
+    <select id="findOrderListByPoolId" resultType="com.hkd.entity.LoanDetails">
+      <![CDATA[
+        SELECT
+            aoc.id AS poolId,aoc.asset_order_id AS orderId,aoc.sort AS sort,abo.out_trade_no AS outTradeNo,abo.user_id AS userId,
+            ar.plan_late_fee AS lateFee, abo.`status` AS `status` , ar.repayment_real_time AS repaymentRealTime,
+            abo.money_amount AS moneyAmount,abo.loan_end_time AS loanEndTime,
+            aop.money_amount AS moneyAmountSum,aop.loan_end_time AS sumLoanEndTime,aop.status AS allStatus,aop.contract AS contract,aop.contract_img AS contractImg
+            FROM asset_order_connect aoc
+            INNER JOIN asset_borrow_order abo ON aoc.asset_order_id = abo.id
+            INNER JOIN asset_repayment ar ON aoc.asset_order_id = ar.asset_order_id
+            INNER JOIN asset_order_pool aop ON aoc.id = aop.id
+        WHERE aoc.id=#{poolId} AND aop.status IN(21,30)
+        GROUP BY aoc.asset_order_id
+        ORDER BY abo.loan_end_time ASC
+      ]]>
+    </select>
+
+
+</mapper>

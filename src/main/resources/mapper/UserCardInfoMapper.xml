@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkd.mapper.UserCardInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.hkd.entity.UserCardInfo" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="user_id" property="userId" jdbcType="INTEGER" />
+        <result column="bank_id" property="bank_id" jdbcType="INTEGER" />
+        <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+        <result column="card_no" property="card_no" jdbcType="VARCHAR" />
+        <result column="credit_amount" property="creditAmount" jdbcType="VARCHAR" />
+        <result column="valid_period" property="validPeriod" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="main_card" property="mainCard" jdbcType="INTEGER" />
+        <result column="open_name" property="openName" jdbcType="VARCHAR" />
+        <result column="bank_address" property="bankAddress" jdbcType="VARCHAR" />
+        <result column="type" property="type" jdbcType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="agreeno" property="agreeno" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, user_id, bank_id, bank_name, card_no, credit_amount, valid_period, phone, status,
+        main_card, open_name, bank_address, type, create_time, update_time, agreeno
+    </sql>
+
+    <select id="findUserCardByUserId" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        from user_card_info uci
+        where uci.user_id = #{userId}
+        <if test="type != null and type != ''">
+            and uci.type = #{type}
+        </if>
+        <if test="status != null and status != ''">
+            and uci.status = #{status}
+        </if>
+    </select>
+    <select id="selectBankInfoByBankId" resultType="java.util.Map" parameterType="Map">
+        select
+    	b.id,
+		b.bank_name bankName,
+		b.bank_status bankStatus,
+		b.bank_code bankCode ,
+		b.bank_number bankNumber
+		from bank_all_info b where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="findUserBankCard" parameterType="map" resultType="com.hkd.entity.UserCardInfo" >
+    	select
+    	 b.id,
+    	b.bank_name bankName,
+    	b.card_no card_no,
+    	b.phone phone,
+    	b.bank_id bank_id,
+    	b.type type,
+    	b.create_time createTime,
+    	b.open_name openName,
+    	b.main_card  mainCard,
+    	b.agreeno
+    	from user_card_info b where user_id = #{id,jdbcType=INTEGER} AND status=1
+  	</select>
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkd.mapper.BackConfigParamsMapper">
+    <resultMap id="BaseResultMap" type="com.hkd.entity.BackConfigParams" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="sys_name" property="sysName" jdbcType="VARCHAR" />
+        <result column="sys_value" property="sysValue" jdbcType="VARCHAR" />
+        <result column="sys_key" property="sysKey" jdbcType="VARCHAR" />
+        <result column="sys_type" property="sysType" jdbcType="VARCHAR" />
+        <result column="input_type" property="inputType" jdbcType="CHAR" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+        <result column="limit_code" property="limitCode" jdbcType="VARCHAR" />
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.hkd.entity.BackConfigParams" extends="BaseResultMap" >
+        <result column="sys_value_big" property="sysValueBig" jdbcType="LONGVARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, sys_name, sys_value, sys_key, sys_type, input_type, remark, limit_code
+    </sql>
+    <sql id="Blob_Column_List" >
+        sys_value_big
+    </sql>
+
+    <select id="getParamsByType" resultMap="BaseResultMap">
+        SELECT *
+        from back_config_params bcp
+        WHERE bcp.sys_type = #{type}
+    </select>
+
+    <select id="getParamsByKey" resultMap="BaseResultMap">
+         SELECT *
+        from back_config_params bcp
+        WHERE bcp.sys_key = #{key}
+    </select>
+    
+    <select id="findParams" resultMap="BaseResultMap" parameterType="HashMap" >
+    select  *  from back_config_params  
+    	<where>
+    		<if test="sysType != null and sysType != ''">
+    			and  sys_type = #{sysType}
+    		</if>
+    		<if test="syskey != null and syskey != ''">
+    			and  sys_key = #{syskey}
+    		</if>
+    		<if test="sysName != null and sysName != ''">
+    			 and sys_name = #{sysName}
+    		</if>
+    	</where>
+      order by sys_type,id asc
+  </select>
+</mapper>

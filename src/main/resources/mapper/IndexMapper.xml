@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hkd.mapper.IndexMapper">
+
+    <select id="searchInfoIndex" resultType="com.hkd.entity.InfoIndex">
+        <![CDATA[
+			select
+			id as id,
+			card_title as card_title,
+			card_amount as card_amount,
+			amount_max as amount_max,
+			amount_min as amount_min,
+			auth_min as auth_min,
+			auth_max as auth_max,
+			today_last_amount as today_last_amount,
+			notice_size as notice_size,
+			amount as amount,
+			service_amount as service_amount,
+			rate as rate,
+			message_url as message_url,
+			bonus_url as bonus_url,
+			borrow_url as borrow_url,
+			status as status,
+			periods as periods
+			from info_index
+			where status='1'
+			limit 1
+		]]>
+    </select>
+    <select id="searchInfoNoticeByIndex" resultType="com.hkd.entity.InfoNotice">
+        <![CDATA[
+			select
+			id as id,
+			not_content as notContent,
+			link_url as linkUrl,
+			not_select as notSelect,
+			status as status
+			from info_notice
+			where status='1'
+			and not_select=#{NOT_SELECT}
+		]]>
+		<![CDATA[order by id desc limit #{COUNT_HKD} ]]>
+    </select>
+    <select id="searchInfoImage" resultType="com.hkd.entity.InfoImage">
+        <![CDATA[
+			select
+			id as id,
+			url as url,
+			title as title,
+			reurl as reurl,
+			sort as sort,
+			status as status
+			from info_image
+			where status=#{STATUS} order by sort asc
+		]]>
+    </select>
+    <select id="searchInfoIndexInfo" resultType="com.hkd.entity.InfoIndexInfo">
+        <![CDATA[
+			select
+			user_id as userId,
+			card_amount as cardAmount,
+			amount_min as amountMin,
+			rate as rate,
+			auth_info as authInfo,
+			auth_contacts as authContacts,
+			auth_bank as authBank,
+			auth_sesame as authSesame,
+			auth_mobile as authMobile,
+			auth_count as authCount,
+			(auth_info+auth_contacts+auth_bank+auth_sesame+auth_mobile)as authSum,
+			borrow_status as borrowStatus,
+			bank_no as bankNo,
+			status as status
+			from info_index_info
+			where status='1'
+			and user_id=#{USER_ID}
+		]]>
+    </select>
+    <select id="searchUserByIndex" resultType="com.hkd.entity.User">
+        <![CDATA[
+			select
+			id as id,
+			amount_min as amountMin,
+			amount_max as amountMax,
+			amount_available as amountAvailable,
+			amount_addsum as amountAddsum,
+			realname_status as realnameStatus,
+			id_number as idNumber,
+			first_contact_name as firstContactName,
+			second_contact_name as secondContactName,
+			zm_status as zmStatus,
+			jxl_status as jxlStatus
+			from user_info
+			where id=#{USER_ID}
+			and status=1
+		]]>
+    </select>
+
+    <select id="searchUserCardInfo" resultType="com.hkd.entity.UserCardInfo">
+        <![CDATA[
+		select
+			id as id,
+			user_id as userId,
+			bank_id as bankId,
+			bank_name as bankName,
+			card_no as card_no,
+			phone as phone,
+			status as status
+			from user_card_info
+			where status=1
+			and user_id=#{USER_ID}
+		]]>
+    </select>
+
+    <update id="updateIndexInfoByUserId" parameterType="com.hkd.entity.InfoIndexInfo">
+        update info_index_info
+        <set>
+            <if test="cardAmount != null and cardAmount !=''">
+                card_amount =#{cardAmount},
+            </if>
+            <if test="amountMin != null and amountMin != ''">
+                amount_min =#{amountMin},
+            </if>
+            <if test="authInfo != null">
+                auth_info =#{authInfo}, auth_info_time=now(),
+            </if>
+            <if test="authContacts != null">
+                auth_contacts =#{authContacts},  auth_contacts_time=now(),
+            </if>
+            <if test="authBank != null">
+                auth_bank =#{authBank},   auth_bank_time=now(),
+            </if>
+            <if test="authSesame != null">
+                auth_sesame =#{authSesame},  auth_sesame_time=now(),
+            </if>
+            <if test="authMobile != null">
+                auth_mobile =#{authMobile},
+            </if>
+            <if test="borrowStatus != null and borrowStatus != ''">
+                borrow_status =#{borrowStatus},
+            </if>
+            <if test="bankNo != null and bankNo != ''">
+                bank_no =#{bankNo},
+            </if>
+            <if test="status != null and status != ''">
+                status =#{status},
+            </if>
+        </set>
+        where user_id =#{userId}
+        <if test="authInfo != null">
+            and auth_info =0
+        </if>
+        <if test="authContacts != null">
+            and auth_contacts =0
+        </if>
+        <if test="authBank != null">
+            and auth_bank =0
+        </if>
+        <if test="authSesame != null">
+            and auth_sesame =0
+        </if>
+    </update>
+
+    <select id="searchBorrowOrderByIndex" parameterType="HashMap" resultType="com.hkd.entity.AssetOrderPool">
+        <![CDATA[
+			select
+			id as id,
+			user_id as userId,
+			out_trade_no as outTradeNo,
+			order_type as orderType,
+			money_amount as moneyAmount,
+			apr as apr,
+			loan_interests as loanInterests,
+			into_money as intoMoney,
+			loan_method as loanMethod,
+			loan_term as loanTerm,
+			operator_name as operatorName,
+			remark as remark,
+			created_at as createdAt,
+			updated_at as updatedAt,
+			order_time as orderTime,
+			loan_time as loanTime,
+			loan_end_time as loanEndTime,
+			late_fee_apr as lateFeeApr,
+			receive_card_id as receiveCardId,
+			debit_card_id as debitCardId,
+			verify_trial_time as verifyTrialTime,
+			verify_trial_remark as verifyTrialRemark,
+			verify_trial_user as verifyTrialUser,
+			verify_review_time as verifyReviewTime,
+			verify_review_remark as verifyReviewRemark,
+			verify_review_user as verifyReviewUser,
+			verify_loan_time as verifyLoanTime,
+			verify_loan_remark as verifyLoanRemark,
+			verify_loan_user as verifyLoanUser,
+			capital_type as capitalType,
+			reason_remark as reasonRemark,
+			credit_lv as creditLv,
+			is_hit_risk_rule as isHitRiskRule,
+			auto_risk_check_status as autoRiskCheckStatus,
+			status as status
+			from asset_order_pool
+			where user_id=#{USER_ID} and status not in (30)
+			order by id desc limit 1
+		]]>
+    </select>
+
+    <select id="findRepaymentList" parameterType="map" resultType="com.hkd.entity.Repayment">
+        SELECT
+        a.id as id,
+        a.period as period,
+        a.status as status,
+        a.credit_repayment_time as creditRepaymentTime,
+        a.repayment_time as repaymentTime,
+        a.repayment_amount as repaymentAmount,
+        a.repaymented_amount as repaymentedAmount,
+         u.realname AS realname,u.user_phone AS userPhone,u.customer_type AS customerType
+        FROM asset_repayment a
+        LEFT JOIN user_info u ON u.id = a.user_id
+        WHERE
+            1 = 1
+        AND a.asset_order_id in (
+        SELECT aoc.asset_order_id
+        from asset_order_connect aoc
+        WHERE id = #{assetOrderId}
+        )
+        order by period
+    </select>
+
+    <select id="findAuditFailureOrderByUserId" resultType="com.hkd.entity.AssetBorrowOrder" parameterType="Map">
+        SELECT verify_trial_time as verifyTrialTime,
+        verify_review_time as verifyReviewTime,
+        verify_loan_time as verifyLoanTime
+        FROM asset_borrow_order WHERE user_id=#{userId}
+        <if test='statusList!=null'>
+            AND status IN
+            <foreach collection="statusList" item="item" open="("
+                     separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        order by id desc
+        limit 1
+    </select>
+    <select id="selectBorrowOrderNowUseId" resultType="com.hkd.entity.AssetOrderPool" parameterType="java.lang.Integer">
+        select
+		bo.out_trade_no outTradeNo,
+		bo.apr apr,
+		bo.loan_interests loanInterests,
+		bo.created_at createdAt,
+		bo.order_time orderTime,
+		bo.loan_time loanTime,
+		bo.loan_time loanTime,
+		bo.loan_end_time loanEndTime,
+		bo.status status
+		from asset_order_pool bo
+		where user_id = #{id,jdbcType=INTEGER} order by created_at DESC LIMIT 1
+    </select>
+    <select id="findParams" resultType="com.hkd.entity.BackConfigParams">
+        select  *
+        from back_config_params
+        <where>
+            <if test="sysType != null and sysType != ''">
+                and  sys_type = #{sysType}
+            </if>
+            <if test="sysName != null and sysName != ''">
+                and sys_name = #{sysName}
+            </if>
+            <if test="sysKey != null and sysKey != ''">
+                and sys_key = #{sysKey}
+            </if>
+        </where>
+        order by sys_type,id asc
+    </select>
+
+
+</mapper>
